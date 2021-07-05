@@ -1,0 +1,72 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Regestration</h5>
+       </div>
+     
+    <div class="modal-body ">
+
+    <form [formGroup]="form" (ngSubmit)="signUpUser(form)">
+        
+        <div class= "row m-1" >
+            <div class= "col-3">
+                Name : {{this.form.controls.name.valid}}
+            </div>
+           <div [ngStyle]="{'border-color': form.controls.name.valid ? 'black' :'red' }" class="col-3"> 
+            <input type="text"  placeholder="" formControlName="name" />
+            </div>
+       </div>
+
+        <div class="row m-1" >
+            <div class= "col-3"> Address : {{this.form.valid}} </div>
+            <div class= "col-3"><input type="password" formControlName="address" /></div>
+        </div>
+    
+        <div class= "row m-1" >
+            <div class= "col-3">Mobile:</div>
+           <div class="col-3"> <input type="text" formControlName="mobile" /></div>
+        </div>
+
+        <div class= "row m-1" >
+            <div class= "col-3">UserId:</div>
+           <div class="col-3"> <input type="text" [ngModel]="formid" formControlName="userID" />
+        
+        </div>
+           <div *ngIf="userExist">UserId already taken</div>
+       </div>
+
+        <div class="row m-1" >
+            <div class= "col-3"> Password: </div>
+            <div class= "col-3"><input type="password" formControlName="password" /></div>
+        </div>
+     
+
+        <div class="row m-1" >
+            <div class= "col-3">Gender : </div>
+            <div class= "col-6">
+                male : <input type="radio" name = "" />
+                female<input type="radio" name = "" />
+            </div>
+        </div>
+
+
+        
+        <div class="row m-1" >
+            <div class= "col-3">Nationality: </div>
+            <div class= "col-6">
+                indian: <input type="checkbox" name = "" />
+                other<input type="checkbox" name = "" />
+            </div>
+        </div>
+
+    
+      
+      <div class="modal-footer">
+        <button type="submut" [disabled]="!this.form.valid" class="btn btn-info" >SignUp</button>
+        <button type="button" class="btn btn-primary" routerLink = "../">cancel</button>
+      </div>
+
+    </form>
+    </div>
+  
+</div>
